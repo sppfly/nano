@@ -1,20 +1,20 @@
 package me.sppfly;
 
+import me.sppfly.stream.Stream;
+
 public class NanoStream {
 
-    private Stream stream;
+	private Stream stream;
 
+	public NanoStream(Stream stream) {
 
-    public NanoStream(Stream stream) {
-        
-    }
+	}
 
+	void run() {
 
-    void run() {
+	}
 
-    }
+	void stop() {
 
-    void stop() {
-
-    }
+	}
 }
