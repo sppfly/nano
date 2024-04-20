@@ -1,15 +1,17 @@
 package me.sppfly.operator;
 
-public class TextSource extends AbstractActive implements Source<String> {
+
+public class TextSource extends AbstractSource<String> {
 
 	private Integer seq;
 
-	public TextSource() {
+	protected TextSource(String name, Integer id) {
+		super(name, id);
+		super.supplier = () -> {
+			return String.format("String-%d", seq++);
+		};
 		this.seq = 0;
+		
 	}
 
-	@Override
-	public String get() {
-		return String.format("String-%d", seq++);
-	}
 }

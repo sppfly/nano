@@ -1,7 +1,10 @@
 package me.sppfly.operator;
 
-public interface Source<T> extends Active {
+import me.sppfly.stream.Stream;
+
+public interface Source<T> extends Active, Named {
 
 	T get();
 
+	void addOutput(Stream<T> outStream);
 }

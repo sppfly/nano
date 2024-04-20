@@ -1,22 +1,13 @@
 package me.sppfly.operator;
 
-public class PrintSink<T> extends AbstractActive implements Sink<T> {
+import java.util.function.Consumer;
 
-	@Override
-	public void to(T t) {
-		System.out.println(t);
-	}
+import me.sppfly.stream.Stream;
 
-	@Override
-	public void enable() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'enable'");
-	}
+// public class PrintSink<T> extends AbstractSink<T> implements Sink<T> {
 
-	@Override
-	public void disable() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'disable'");
-	}
+// 	protected PrintSink(String name, Integer id, Consumer<T> consumer) {
+// 		super(name, id, consumer);
+// 	}
 
-}
+// }

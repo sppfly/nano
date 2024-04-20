@@ -3,6 +3,7 @@ package me.sppfly.stream;
 import java.util.concurrent.ArrayBlockingQueue;
 
 import me.sppfly.NanoException;
+import me.sppfly.operator.Sink;
 
 /// 
 /// A blocking stream with specific capacity, this is essentially a
@@ -33,5 +34,6 @@ public class BlockStream<T> implements Stream<T> {
 			throw new NanoException(e);
 		}
 	}
+
 
 }

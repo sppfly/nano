@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		var streamBuilder = new StreamBuilder();
 
-		Stream<Object> stream = streamBuilder.from(null);
+		Stream<Object> stream = streamBuilder.from();
 
 		var nanoStream = new NanoStream(stream);
 		nanoStream.run();
