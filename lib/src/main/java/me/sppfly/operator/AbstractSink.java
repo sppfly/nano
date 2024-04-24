@@ -16,9 +16,16 @@ public abstract class AbstractSink<T> implements Sink<T> {
 
 	private Integer id;
 
-	private Consumer<T> consumer;
+	protected Consumer<T> consumer;
 
 	private Stream<T> inputStream;
+
+	
+
+	public AbstractSink(String name, Integer id) {
+		this.name = name;
+		this.id = id;
+	}
 
 	@Override
 	public void disable() {

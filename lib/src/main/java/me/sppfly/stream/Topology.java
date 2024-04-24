@@ -1,7 +1,5 @@
 package me.sppfly.stream;
 
-import java.util.Set;
-
 import me.sppfly.operator.Sink;
 import me.sppfly.operator.Source;
 
@@ -11,11 +9,21 @@ import me.sppfly.operator.Source;
  */
 public class Topology {
 
-	private Source<?> source;
+	private Source<String> source;
 
-	private Sink<?> sink;
+	private Sink<String> sink;
 
-	public void addSource() {
-		
+	public void addSource(Source<String> source) {
+		this.source = source;
+	}
+
+	public void addSink(Sink<String> sink) {
+		this.sink = sink;
+	}
+
+	public void connect() {
+		BlockStream<String> blockStream = new BlockStream<>(100);
+		source.addOutput(blockStream);
+		sink.addInput(blockStream);
 	}
 }

@@ -5,7 +5,7 @@ public class TextSource extends AbstractSource<String> {
 
 	private Integer seq;
 
-	protected TextSource(String name, Integer id) {
+	public TextSource(String name, Integer id) {
 		super(name, id);
 		super.supplier = () -> {
 			return String.format("String-%d", seq++);
