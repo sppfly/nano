@@ -1,22 +1,18 @@
 package me.sppfly;
 
-import me.sppfly.stream.Stream;
 import me.sppfly.stream.Topology;
-import me.sppfly.operator.AbstractSink;
+import me.sppfly.operator.BaseSink;
 import me.sppfly.operator.TextSource;
 
 public class Main {
-  public static void main(String[] args) {
-    var streamBuilder = new StreamBuilder();
+	public static void main(String[] args) {
 
-	Topology topology = new Topology();
-	topology.addSource(new TextSource("source", 0));
-	topology.addSink(new AbstractSink<String>() {
-		
-	});
+		Topology topology = new Topology();
+		topology.addSource(new TextSource("source", 0));
+		topology.addSink(new BaseSink<>("sink", 1, System.out::println));
 
-    var nanoStream = new NanoStream(stream);
-    nanoStream.run();
-    nanoStream.stop();
-  }
+		var nanoStream = new NanoStream(topology);
+		nanoStream.run();
+		nanoStream.stop();
+	}
 }

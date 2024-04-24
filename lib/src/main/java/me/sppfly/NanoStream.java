@@ -1,13 +1,13 @@
 package me.sppfly;
 
-import me.sppfly.stream.Stream;
+import me.sppfly.stream.Topology;
 
 public class NanoStream {
 
-	private Stream stream;
+	private Topology topology;
 
-	public NanoStream(Stream stream) {
-
+	public NanoStream(Topology topology) {
+		this.topology = topology;
 	}
 
 	void run() {
