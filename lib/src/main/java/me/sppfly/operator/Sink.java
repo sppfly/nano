@@ -1,10 +1,7 @@
 package me.sppfly.operator;
 
-import me.sppfly.stream.Stream;
-
-public interface Sink<T> extends Active, Named {
+public interface Sink<T> extends Operator1In<T> {
 
 	void to(T t);
 
-	void addInput(Stream<T> stream);
 }
