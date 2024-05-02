@@ -21,10 +21,9 @@ public abstract class AbstractSource<T> implements Source<T> {
 		this.id = id;
 	}
 
-
 	@Override
 	public void addOutput(Stream<T> outStream) {
-		this.outStream = outStream;	
+		this.outStream = outStream;
 	}
 
 	@Override
@@ -34,12 +33,12 @@ public abstract class AbstractSource<T> implements Source<T> {
 
 	@Override
 	public void disable() {
-		this.active = false;	
+		this.active = false;
 	}
 
 	@Override
 	public void enable() {
-		this.active = true;	
+		this.active = true;
 	}
 
 	@Override
@@ -56,5 +55,5 @@ public abstract class AbstractSource<T> implements Source<T> {
 	public String name() {
 		return this.name;
 	}
-	
+
 }

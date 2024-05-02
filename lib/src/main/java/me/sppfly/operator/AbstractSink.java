@@ -20,8 +20,6 @@ public abstract class AbstractSink<T> implements Sink<T> {
 
 	private Stream<T> inputStream;
 
-	
-
 	public AbstractSink(String name, Integer id) {
 		this.name = name;
 		this.id = id;
@@ -57,7 +55,7 @@ public abstract class AbstractSink<T> implements Sink<T> {
 		consumer.accept(t);
 	}
 
-	@Override 
+	@Override
 	public void addInput(Stream<T> stream) {
 		this.inputStream = stream;
 	}
