@@ -3,7 +3,7 @@ package me.sppfly.stream;
 import java.util.concurrent.ArrayBlockingQueue;
 
 import me.sppfly.NanoException;
-import me.sppfly.operator.Sink;
+import me.sppfly.operator.sink.Sink;
 
 /// 
 /// A blocking stream with specific capacity, this is essentially a

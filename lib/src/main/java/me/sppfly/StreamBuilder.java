@@ -1,6 +1,6 @@
 package me.sppfly;
 
-import me.sppfly.operator.Source;
+import me.sppfly.operator.source.Source;
 import me.sppfly.stream.BlockStream;
 import me.sppfly.stream.Stream;
 

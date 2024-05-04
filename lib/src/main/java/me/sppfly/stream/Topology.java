@@ -1,7 +1,7 @@
 package me.sppfly.stream;
 
-import me.sppfly.operator.Sink;
-import me.sppfly.operator.Source;
+import me.sppfly.operator.sink.Sink;
+import me.sppfly.operator.source.Source;
 
 /**
  * Topology is a graph of streams, it is the same thing as Topology in Kafka or
@@ -26,4 +26,23 @@ public class Topology {
 		source.addOutput(blockStream);
 		sink.addInput(blockStream);
 	}
+
+	public Source<String> getSource() {
+		return source;
+	}
+
+	public void setSource(Source<String> source) {
+		this.source = source;
+	}
+
+	public Sink<String> getSink() {
+		return sink;
+	}
+
+	public void setSink(Sink<String> sink) {
+		this.sink = sink;
+	}
+
+
+	
 }

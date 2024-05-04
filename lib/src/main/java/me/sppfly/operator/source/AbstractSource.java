@@ -1,14 +1,10 @@
 package me.sppfly.operator;
 
-import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import me.sppfly.stream.Stream;
 
-/// 
-/// ! This sounds like an awful idea, it wastes the only chance for others to 
-/// ! extends a parent class. But lets just keep it here.
-/// 
-public class BaseSink<T> implements Sink<T> {
+public abstract class AbstractSource<T> implements Source<T> {
 
 	private boolean active = false;
 
@@ -16,13 +12,23 @@ public class BaseSink<T> implements Sink<T> {
 
 	private Integer id;
 
-	protected Consumer<T> consumer;
+	private Stream<T> outStream;
 
-	private Stream<T> inputStream;
+	protected Supplier<T> supplier;
 
-	public BaseSink(String name, Integer id, Consumer<T> consumer) {
+	protected AbstractSource(String name, Integer id) {
 		this.name = name;
 		this.id = id;
+	}
+
+	@Override
+	public void addOutput(Stream<T> outStream) {
+		this.outStream = outStream;
+	}
+
+	@Override
+	public T get() {
+		return this.supplier.get();
 	}
 
 	@Override
@@ -49,15 +55,10 @@ public class BaseSink<T> implements Sink<T> {
 	public String name() {
 		return this.name;
 	}
-
+	
 	@Override
-	public void to(T t) {
-		consumer.accept(t);
-	}
-
-	@Override
-	public void addInput(Stream<T> stream) {
-		this.inputStream = stream;
+	public void process() {
+		this.outStream.push(get());
 	}
 
 }

@@ -1,11 +1,11 @@
-package me.sppfly.operator;
+package me.sppfly.operator.source;
 
 
-public class TextSource extends AbstractSource<String> {
+public class BaseSource extends AbstractSource<String> {
 
 	private Integer seq;
 
-	public TextSource(String name, Integer id) {
+	public BaseSource(String name, Integer id) {
 		super(name, id);
 		super.supplier = () -> {
 			return String.format("String-%d", seq++);
@@ -13,5 +13,7 @@ public class TextSource extends AbstractSource<String> {
 		this.seq = 0;
 		
 	}
+
+
 
 }

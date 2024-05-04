@@ -1,14 +1,14 @@
 package me.sppfly;
 
 import me.sppfly.stream.Topology;
-import me.sppfly.operator.BaseSink;
-import me.sppfly.operator.TextSource;
+import me.sppfly.operator.sink.BaseSink;
+import me.sppfly.operator.source.BaseSource;
 
 public class Main {
 	public static void main(String[] args) {
 
 		Topology topology = new Topology();
-		topology.addSource(new TextSource("source", 0));
+		topology.addSource(new BaseSource("source", 0));
 		topology.addSink(new BaseSink<>("sink", 1, System.out::println));
 
 		var nanoStream = new NanoStream(topology);

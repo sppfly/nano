@@ -1,4 +1,5 @@
-package me.sppfly.operator;
+package me.sppfly.operator.sink;
+
 
 import java.util.function.Consumer;
 
@@ -20,9 +21,10 @@ public abstract class AbstractSink<T> implements Sink<T> {
 
 	private Stream<T> inputStream;
 
-	public AbstractSink(String name, Integer id) {
+	public AbstractSink(String name, Integer id, Consumer<T> consumer) {
 		this.name = name;
 		this.id = id;
+		this.consumer = consumer;
 	}
 
 	@Override
@@ -60,4 +62,8 @@ public abstract class AbstractSink<T> implements Sink<T> {
 		this.inputStream = stream;
 	}
 
+	@Override
+	public void process() {
+		this.to(inputStream.pop());
+	}
 }

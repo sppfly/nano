@@ -1,4 +1,4 @@
-package me.sppfly.operator;
+package me.sppfly.operator.base;
 
 import me.sppfly.stream.Stream;
 
