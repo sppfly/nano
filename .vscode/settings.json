@@ -4,5 +4,6 @@
     "[java]": {
         "editor.detectIndentation": false,
         "editor.insertSpaces": false
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
