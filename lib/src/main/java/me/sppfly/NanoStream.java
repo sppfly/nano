@@ -1,5 +1,6 @@
 package me.sppfly;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.sppfly.operator.base.Node;
@@ -15,8 +16,11 @@ public class NanoStream {
 
 	public NanoStream(Topology topology) {
 		this.topology = topology;
-		nodes.add(this.topology.getSource());
-		nodes.add(this.topology.getSink());
+		this.nodes = new ArrayList<>();
+		this.nanoThreads = new ArrayList<>();
+
+		this.topology.getSources().forEach(source -> nodes.add(source));
+		this.topology.getSinks().forEach(sink -> nodes.add(sink));
 	}
 
 	public void run() {
@@ -25,7 +29,6 @@ public class NanoStream {
 			nanoThreads.add(nanoThread);
 			nanoThread.start();
 		}
-
 	}
 
 	public void stop() {

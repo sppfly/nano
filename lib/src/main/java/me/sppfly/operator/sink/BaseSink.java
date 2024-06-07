@@ -8,7 +8,7 @@ import me.sppfly.stream.Stream;
 /// ! This sounds like an awful idea, it wastes the only chance for others to 
 /// ! extends a parent class. But lets just keep it here.
 /// 
-public class BaseSink<T> extends AbstractSink<T> {
+public class BaseSink<T> implements Sink<T> {
 
 	private boolean active = false;
 
@@ -21,11 +21,8 @@ public class BaseSink<T> extends AbstractSink<T> {
 	private Stream<T> inputStream;
 
 	public BaseSink(String name, Integer id, Consumer<T> consumer) {
-		super(name, id, consumer);
-	}
-	
-	public BaseSink(Consumer<T> consumer) {
-		super(name, id, consumer);
+		this.name = name;
+		this.id = id;
 		this.consumer = consumer;
 	}
 
@@ -64,5 +61,9 @@ public class BaseSink<T> extends AbstractSink<T> {
 		this.inputStream = stream;
 	}
 
+	@Override
+	public void process() {
+		this.consumer.accept(this.inputStream.pop());
+	}
 
 }

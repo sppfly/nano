@@ -1,19 +1,66 @@
+
 package me.sppfly.operator.source;
 
+import java.util.function.Supplier;
 
-public class BaseSource extends AbstractSource<String> {
+import me.sppfly.stream.Stream;
 
-	private Integer seq;
+public class BaseSource<T> implements Source<T> {
 
-	public BaseSource(String name, Integer id) {
-		super(name, id);
-		super.supplier = () -> {
-			return String.format("String-%d", seq++);
-		};
-		this.seq = 0;
-		
+	private boolean active = false;
+
+	private String name;
+
+	private Integer id;
+
+	private Stream<T> outStream;
+
+	private Supplier<T> supplier;
+
+	public BaseSource(String name, Integer id, Supplier<T> supplier) {
+		this.name = name;
+		this.id = id;
+		this.supplier = supplier;
 	}
 
+	@Override
+	public void addOutput(Stream<T> outStream) {
+		this.outStream = outStream;
+	}
 
+	@Override
+	public T get() {
+		return this.supplier.get();
+	}
+
+	@Override
+	public void disable() {
+		this.active = false;
+	}
+
+	@Override
+	public void enable() {
+		this.active = true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return this.active;
+	}
+
+	@Override
+	public Integer id() {
+		return this.id;
+	}
+
+	@Override
+	public String name() {
+		return this.name;
+	}
+
+	@Override
+	public void process() {
+		this.outStream.push(get());
+	}
 
 }

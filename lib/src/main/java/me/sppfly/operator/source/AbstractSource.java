@@ -1,4 +1,4 @@
-package me.sppfly.operator;
+package me.sppfly.operator.source;
 
 import java.util.function.Supplier;
 
